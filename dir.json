@@ -70,20 +70,6 @@
         "children": [117, 207, 261, 406, 511, 621, 623, 663, 738, 939, 1323, 1391, 1640, 1743, 2003, 2500, 2504, 2507, 2600, 2915], 
         "com": 3
     },
-    "85": {
-        "aliases": [],
-        "applicable": true,
-        "cat": "ero",
-        "description": "pedia.org/wiki/Rape]强奸[/ur in the game can be avoided - they're in bad ends (that you do not need to see to get the good ends), or can simply be avoided by taking the right choices.",
-        "id": 85,
-        "meta": false,
-        "name": "Only Avoidable Rape Scenes",
-        "parents": [939],
-        "searchable": true,
-        "vns": 118,
-        "children": [], 
-        "com": 6
-    },
     "86": {
         "aliases": [近亲相奸],
         "applicable": true,
@@ -180,7 +166,7 @@
         "searchable": true,
         "vns": 620,
         "children": [94, 95, 652, 1318, 1693, 1942], 
-        "com": 0
+        "com": 4
     },
     "94": {
         "aliases": [],
