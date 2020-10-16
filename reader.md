@@ -29,7 +29,7 @@ function placeFileContent(target, file) {
 	for (i in content) {
 		if (content[i] == '>') {
 			name = content.slice(1,i)
-			content = content.slice(i-1).trim()
+			content = content.slice(i+1).trim()
 			break
 		}
 	}
@@ -39,7 +39,7 @@ function placeFileContent(target, file) {
 	ttl = title
   	target.innerHTML = ""
   	for (i in content) {
-  		target.innerHTML += "<p onclick='placeChapter(document.getElementById('content-target'),"+i+")'>"+ttl[i]+"</p>"
+  		target.innerHTML += "<p onclick='placeChapter(document.getElementById(\"content-target\"),"+i+")'>"+ttl[i]+"</p>"
   	}
   }).catch(error => console.log(error))
 }
