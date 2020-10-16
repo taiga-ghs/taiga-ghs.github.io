@@ -25,11 +25,11 @@ function getFile(event) {
 
 function placeFileContent(target, file) {
 	readFileContent(file).then(content => {
-	content = content.slice(35)
+	content = content.slice(36)
 	for (i in content) {
 		if (content[i] == '>') {
-			name = content.slice(1,i)
-			content = content.slice(i+1).trim()
+			name = content.slice(0,i)
+			content = content.slice(Number(i)+1).trim()
 			break
 		}
 	}
