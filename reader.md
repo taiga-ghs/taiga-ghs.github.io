@@ -1,4 +1,4 @@
-<h1>阅读器</h1>
+<h1 id='ttl'>阅读器</h1>
 
 <div id='the-input'>
  <label for="input-file">文本文件：</label><br>
@@ -12,6 +12,7 @@ document.getElementById('input-file')
 
 chp = new Array
 ttl = new Array
+ttt = document.getElementById('ttl')
 
 function getFile(event) {
 	const input = event.target
@@ -29,7 +30,7 @@ function placeFileContent(target, file) {
 	for (i in content) {
 		if (content[i] == '>') {
 			name = content.slice(0,i)
-			content = content.slice(Number(i)+1).trim()
+			content = content.slice(Number(i)+1, -76).trim()
 			break
 		}
 	}
@@ -39,8 +40,9 @@ function placeFileContent(target, file) {
 	ttl = title
   	target.innerHTML = ""
   	for (i in content) {
-  		target.innerHTML += "<p onclick='placeChapter(document.getElementById(\"content-target\"),"+i+")'>"+ttl[i]+"</p>"
+  		target.innerHTML += "<p onclick='placeChapter(document.getElementById(\"content-target\"),"+i+")'><a>"+ttl[i]+"</a></p>"
   	}
+  	ttt.innerHTML="选择章节"
   }).catch(error => console.log(error))
 }
 
@@ -63,9 +65,11 @@ function getTitle(chapters) {
 }
 
 function placeChapter(target, chp_n) {
+	ttt.innerHTML=ttl[chp_n]
 	content = chp[chp_n]
 	content = ("<p>"+content).replace(/\r?\n|\r/g, "</p><p>").replace(/\s{4}/g, "　　")+"</p>"
 	target.innerHTML = content
+	target.innerHTML += "<ponclick='placeChapter(document.getElementById(\"content-target\"),"+(chp_n-1)+")'><a>前一章</a></p><p onclick='placeChapter(document.getElementById(\"content-target\"),"+(chp_n+1)+")'><a>后一章</a></p>"
 }
 
 function readFileContent(file) {
