@@ -1,4 +1,4 @@
-<h1 id='ttl'>阅读器</h1>
+<h1 id='ttl'>阅读器v0.0.6</h1>
 
 <div id='the-input'>
  <label for="input-file">文本文件：</label><br>
@@ -13,6 +13,11 @@ document.getElementById('input-file')
 chp = new Array
 ttl = new Array
 ttt = document.getElementById('ttl')
+
+function topFunction() {
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+}
 
 function getFile(event) {
 	const input = event.target
@@ -69,7 +74,7 @@ function placeChapter(target, chp_n) {
 	content = chp[chp_n]
 	content = ("<p>"+content).replace(/\r?\n|\r/g, "</p><p>").replace(/\s{4}/g, "　　")+"</p>"
 	target.innerHTML = content
-	target.innerHTML += "<ponclick='placeChapter(document.getElementById(\"content-target\"),"+(chp_n-1)+")'><a>前一章</a></p><p onclick='placeChapter(document.getElementById(\"content-target\"),"+(chp_n+1)+")'><a>后一章</a></p>"
+	target.innerHTML += "<ponclick='placeChapter(document.getElementById(\"content-target\"),"+(chp_n-1)+");topFunction()'><a>前一章</a></p><p onclick='placeChapter(document.getElementById(\"content-target\"),"+(chp_n+1)+");topFunction()'><a>后一章</a></p>"
 }
 
 function readFileContent(file) {
