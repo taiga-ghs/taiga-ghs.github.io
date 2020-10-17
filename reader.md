@@ -1,4 +1,4 @@
-<h1 id='ttl'>阅读器v0.0.2.11</h1>
+<h1 id='ttl'>阅读器v0.0.2.12</h1>
 
 <div id='the-input'>
  <label for="input-file">文本文件：</label><br>
@@ -32,17 +32,17 @@ function getFile(event) {
 
 function placeFileContent(target, file) {
 	readFileContent(file).then(content => {
-	content = content.slice(36)
-	for (i=0;i<content.length;i++) {
-		if (content[i] == '>') {
-			name = content.slice(0,i)
-			content = content.slice(i+1, -77).trim()
+	ctt = content.slice(36)
+	for (i=0;i<ctt.length;i++) {
+		if (ctt[i] == '>') {
+			name = ctt.slice(0,i)
+			ctt = ctt.slice(i+1, -77).trim()
 			break
 		}
 	}
-	content = separateChapters(content)
-	chp = content
-	title = getTitle(content)
+	ctt = separateChapters(ctt)
+	chp = ctt
+	title = getTitle(ctt)
 	ttl = title
 	placeTOC(target)
   }).catch(error => console.log(error))
