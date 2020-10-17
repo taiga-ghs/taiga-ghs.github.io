@@ -1,4 +1,4 @@
-<h1 id='ttl'>阅读器v0.0.2.9</h1>
+<h1 id='ttl'>阅读器v0.0.2.10</h1>
 
 <div id='the-input'>
  <label for="input-file">文本文件：</label><br>
@@ -32,7 +32,7 @@ function getFile(event) {
 
 function placeFileContent(target, file) {
 	readFileContent(file).then(content => {
-	content = content.slice(36)
+	content = content.slice(37)
 	for (i=0;i<content.length;i++) {
 		if (content[i] == '>') {
 			name = content.slice(0,i)
@@ -79,9 +79,10 @@ function placeChapter(target, chp_n) {
 	ttt.innerHTML=ttl[chp_n]
 	content = chp[chp_n]
 	content = ("<p>"+content).replace(/\r?\n|\r/g, "</p><p>").replace(/\s{4}/g, "　　")+"</p>"
-	target.innerHTML = "<p onclick='placeTOC(document.getElementById(\"content-target\")'><a>返回目录</a></p>"
+	target.innerHTML = "<p onclick='placeTOC(document.getElementById(\"content-target\"))'><a>返回目录</a></p>"
 	target.innerHTML += content
-	target.innerHTML += "<p onclick='placeChapter(document.getElementById(\"content-target\"),"+(chp_n-1)+");topFunction()'><a>前一章</a></p><p onclick='placeChapter(document.getElementById(\"content-target\"),"+(chp_n+1)+");topFunction()'><a>后一章</a></p>"
+	target.innerHTML += (chp_n>1?"<p onclick='placeChapter(document.getElementById(\"content-target\"),"+(chp_n-1)+");topFunction()'>":"")
+	target.innerHTML += (chp_n+1<chp.length?"<a>前一章</a></p><p onclick='placeChapter(document.getElementById(\"content-target\"),"+(chp_n+1)+");topFunction()'><a>后一章</a></p>":"")
 }
 
 function readFileContent(file) {
