@@ -1,4 +1,4 @@
-<h1 id='ttl'>阅读器v0.0.2.12</h1>
+<h1 id='ttl'>阅读器v0.0.2.13</h1>
 
 <div id='the-input'>
  <label for="input-file">文本文件：</label><br>
@@ -14,6 +14,7 @@ chp = new Array
 ttl = new Array
 ttt = document.getElementById('ttl')
 nem = new String
+content = new String
 
 function topFunction() {
   document.body.scrollTop = 0; // For Safari
