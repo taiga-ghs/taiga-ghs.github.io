@@ -1,4 +1,4 @@
-<h1 id='ttl'>阅读器v0.0.6</h1>
+<h1 id='ttl'>阅读器v0.0.7</h1>
 
 <div id='the-input'>
  <label for="input-file">文本文件：</label><br>
@@ -13,6 +13,7 @@ document.getElementById('input-file')
 chp = new Array
 ttl = new Array
 ttt = document.getElementById('ttl')
+nem = new String
 
 function topFunction() {
   document.body.scrollTop = 0; // For Safari
@@ -35,20 +36,23 @@ function placeFileContent(target, file) {
 	for (i in content) {
 		if (content[i] == '>') {
 			name = content.slice(0,i)
-			content = content.slice(Number(i)+1, -76).trim()
+			content = content.slice(Number(i)+1, -77).trim()
 			break
 		}
 	}
 	content = separateChapters(content)
-	chp = content
 	title = getTitle(content)
-	ttl = title
+	placeTOC(target)
+  }).catch(error => console.log(error))
+}
+
+function placeTOC(target){
+  	ttt.innerHTML="目录 - "+name
   	target.innerHTML = ""
   	for (i in content) {
-  		target.innerHTML += "<p onclick='placeChapter(document.getElementById(\"content-target\"),"+i+")'><a>"+ttl[i]+"</a></p>"
+  		target.innerHTML += "<p onclick='placeChapter(document.getElementById(\"content-target\"),"+i+")'><a>"+title[i]+"</a></p>"
   	}
-  	ttt.innerHTML="选择章节"
-  }).catch(error => console.log(error))
+  	target.innerHTML += "<p onclick=\"window.window.window['window'].location = window['window'].window['window']['window']['window']['window']['window']['window']['location']\"><a>读取新图书</a></p>"
 }
 
 sep_reg = /\n(?!\s{4})(?=.)/
@@ -73,8 +77,9 @@ function placeChapter(target, chp_n) {
 	ttt.innerHTML=ttl[chp_n]
 	content = chp[chp_n]
 	content = ("<p>"+content).replace(/\r?\n|\r/g, "</p><p>").replace(/\s{4}/g, "　　")+"</p>"
-	target.innerHTML = content
-	target.innerHTML += "<ponclick='placeChapter(document.getElementById(\"content-target\"),"+(chp_n-1)+");topFunction()'><a>前一章</a></p><p onclick='placeChapter(document.getElementById(\"content-target\"),"+(chp_n+1)+");topFunction()'><a>后一章</a></p>"
+	target.innerHTML = "<p onclick='placeTOC(document.getElementById(\"content-target\")'><a>返回目录</a></p>"
+	target.innerHTML += content
+	target.innerHTML += "<p onclick='placeChapter(document.getElementById(\"content-target\"),"+(chp_n-1)+");topFunction()'><a>前一章</a></p><p onclick='placeChapter(document.getElementById(\"content-target\"),"+(chp_n+1)+");topFunction()'><a>后一章</a></p>"
 }
 
 function readFileContent(file) {
