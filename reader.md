@@ -1,4 +1,4 @@
-<h1 id='ttl'>阅读器v0.0.2.8</h1>
+<h1 id='ttl'>阅读器v0.0.2.9</h1>
 
 <div id='the-input'>
  <label for="input-file">文本文件：</label><br>
@@ -33,10 +33,10 @@ function getFile(event) {
 function placeFileContent(target, file) {
 	readFileContent(file).then(content => {
 	content = content.slice(36)
-	for (i in content) {
+	for (i=0;i<content.length;i++) {
 		if (content[i] == '>') {
-			name = content.slice(1,i)
-			content = content.slice(Number(i)+1, -77).trim()
+			name = content.slice(0,i)
+			content = content.slice(i+1, -77).trim()
 			break
 		}
 	}
@@ -54,7 +54,7 @@ function placeTOC(target){
   	for (i in chp) {
   		target.innerHTML += "<p onclick='placeChapter(document.getElementById(\"content-target\"),"+i+")'><a>"+ttl[i]+"</a></p>"
   	}
-  	target.innerHTML += "<p onclick=\"window.window.window['window'].location = window['window'].window['window']['window']['window']['window']['window']['window']['location']\"><a>读取新图书</a></p>"
+  	target.innerHTML += "<hr><p onclick=\"window.window.window['window'].location = window['window'].window['window']['window']['window']['window']['window']['window']['location']\"><a>换一本书</a></p>"
 }
 
 sep_reg = /\n(?!\s{4})(?=.)/
