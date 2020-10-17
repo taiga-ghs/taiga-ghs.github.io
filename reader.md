@@ -1,4 +1,4 @@
-<h1 id='ttl'>阅读器v0.0.2.14</h1>
+<h1 id='ttl'>阅读器v0.0.2.15</h1>
 
 <div id='the-input'>
  <label for="input-file">文本文件：</label><br>
@@ -14,7 +14,6 @@ chp = new Array
 ttl = new Array
 ttt = document.getElementById('ttl')
 nem = new String
-debug_content = new String
 
 function topFunction() {
   document.body.scrollTop = 0; // For Safari
@@ -33,8 +32,7 @@ function getFile(event) {
 
 function placeFileContent(target, file) {
 	readFileContent(file).then(content => {
-	debug_content = content
-	ctt = content.slice(36)
+	ctt = content.slice(38)
 	for (i=0;i<ctt.length;i++) {
 		if (ctt[i] == '>') {
 			name = ctt.slice(0,i)
